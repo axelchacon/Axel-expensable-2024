@@ -11,7 +11,7 @@ async function login(credentials = { email, password }) {
   });
   //Paso2///////////////
   const data = await response.json();
-  //Paso4/////////////// cambiamos user por data
+  //Paso4/////////////// cambiamos user por data, esta función if es para que capture el error y este sirve para hacer dos formas de error mostradas en el archivo sessions-srvices.js
   if (!response.ok) {
     throw new Error(data.errors);
   }
