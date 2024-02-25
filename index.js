@@ -2,5 +2,7 @@
 ///Por parte de Axel, se comenzó el 24/02/2024. Van 2 días.
 import { login } from "./scripts/services/sessions-service.js";
 
-login({ email: "axelchacon@mail.co", password: "123456" });
+login({ email: "axelchacon@mail.co", password: "123456" }).then((user) =>
+  console.log(user)
+);
 console.log("Hola");
