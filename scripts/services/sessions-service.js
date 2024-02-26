@@ -22,4 +22,26 @@ async function login(credentials = { email, password }) {
   //Paso1///////////////
   // console.log(response);
 }
-export { login };
+
+async function logout() {
+  const token = sessionStorage.getItem(tokenKey); //sessionStorage.getItem es un método para obtener ese valor que guardamos gracias a   sessionStorage.setItem
+  const response = await fetch(`${BASE_URI}/logout`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  });
+  let data;
+  try {
+    data = await response.json();
+  } catch (error) {
+    data = response.statusText;
+  }
+  // const data = await response.json();
+  if (!response.ok) {
+    throw new Error(data.errors);
+  }
+  sessionStorage.removeItem(tokenKey); //sessionStorage.removeItem es
+  return data;
+}
+export { login, logout };
