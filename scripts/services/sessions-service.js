@@ -6,7 +6,11 @@ async function login(credentials = { email, password }) {
     method: "POST",
     body: JSON.stringify(credentials),
     headers: {
+      // forma 1/////
       "Content-Type": "application/json",
+      // forma 2/////
+      // Authorization: `Token token=${false}`,
+      // "Content-Type": "application/json",
     },
   });
   //Paso2///////////////

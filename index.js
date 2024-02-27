@@ -6,7 +6,7 @@ import { login } from "./scripts/services/sessions-service.js";
 //   .then((user) => console.log(user))
 //   .catch((error) => console.log(error));
 // Forma 2 para capturar al  error,  se recomienda porque es flexible///////
-const credentials = { email: "axelchacon@mail.co", password: "1234566" };
+const credentials = { email: "axelchacon@mail.co", password: "123456" };
 async function test() {
   try {
     const user = await login(credentials);
