@@ -10,8 +10,20 @@ export function createTransaction(
     body: newTransaction,
   });
 }
+
+export function updateTransaction(
+  idCategory,
+  idTransaction,
+  data = { amount, notes, date }
+) {
+  return apiFetch(`/categories/${idCategory}/transactions/${idTransaction}`, {
+    body: data,
+    method: "PATCH",
+  });
+}
+
 export function deleteTransaction(idCategory, idTransaction) {
-  return apiFetch(`/categories/${idCategory}/transactions${idTransaction}`, {
+  return apiFetch(`/categories/${idCategory}/transactions/${idTransaction}`, {
     method: "DELETE",
   });
 }
