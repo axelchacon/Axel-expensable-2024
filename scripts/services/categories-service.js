@@ -1,0 +1,12 @@
+import apiFetch from "./api-fetch.js";
+export function getCategories() {
+  return apiFetch("/categories");
+}
+export function createCategory(
+  newCategory = { name, transaction_type, color, ico }
+) {
+  return apiFetch("/categories", { body: newCategory });
+}
+export function deleteCategories(id) {
+  return apiFetch(`/categories/${id}`, { method: "DELETE" });
+}
