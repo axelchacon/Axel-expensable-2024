@@ -1,7 +1,7 @@
 import { tokenKey } from "../config.js";
 import apiFetch from "./api-fetch.js";
 ////// crear usuario ////////
-async function createUser(
+export async function createUser(
   newUser = {
     email,
     password,
@@ -16,7 +16,7 @@ async function createUser(
 }
 ////// actualizar el usuario ////////
 
-async function updateUser(
+export async function updateUser(
   data = {
     email,
     first_name,
@@ -25,5 +25,12 @@ async function updateUser(
   }
 ) {
   const user = await apiFetch("/profile", { body: data, method: "PATCH" });
+  return user;
+}
+
+/////para obtener la información de nuestros usuarios
+
+export async function getUser() {
+  const user = await apiFetch("/profile");
   return user;
 }
