@@ -5,9 +5,11 @@ import HomePage from "./scripts/pages/home-page.js";
 import { login } from "./scripts/services/sessions-service.js";
 import { getUser } from "./scripts/services/user-service.js";
 // DOMHandler.load(HomePage);
+
 async function init() {
   try {
     const token = sessionStorage.getItem(tokenKey);
+
     if (!token) return DOMHandler.load(LoginPage);
     //Home//////
     const user = await getUser();
