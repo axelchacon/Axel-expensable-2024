@@ -27,3 +27,8 @@ async function updateUser(
   const user = await apiFetch("/profile", { body: data, method: "PATCH" });
   return user;
 }
+
+export async function getUser() {
+  const user = await apiFetch("/profile");
+  return user;
+}
