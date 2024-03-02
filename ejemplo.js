@@ -1,3 +1,4 @@
-const DOMHandler = (function (parentSelector) {
-  ////código
-})("#root");
+// const DOMHandler = (function (parentSelector) {
+//   ////código
+// })("#root");
+console.log("Hola");
