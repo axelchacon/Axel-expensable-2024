@@ -60,6 +60,8 @@ function listenSubmitForm() {
       const user = await login(credentials);
       // console.log(user);
       STORE.user = user;
+      // console.log(STORE);
+      STORE.fetchCategories();
       console.log(STORE);
       DOMHandler.load(HomePage);
     } catch (error) {

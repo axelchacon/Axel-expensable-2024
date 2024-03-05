@@ -7,6 +7,8 @@ async function login(credentials = { email, password }) {
   const { token, ...user } = await apiFetch("/login", { body: credentials });
   sessionStorage.setItem(tokenKey, token);
   return user;
+  // console.log(user);
+  // console.log(token);
   // const response = await fetch(`${BASE_URI}/login`, {
   //   method: "POST",
   //   body: JSON.stringify(credentials),
