@@ -64,7 +64,7 @@ function listenSubmitForm() {
       DOMHandler.load(HomePage);
     } catch (error) {
       LoginPage.state.loginError = error.message;
-      console.log(error.message);
+      console.log(error.message); /// se muestra solo en la consola: Incorrect email or password
       DOMHandler.reload();
     }
   });
