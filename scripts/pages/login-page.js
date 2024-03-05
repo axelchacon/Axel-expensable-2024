@@ -1,8 +1,10 @@
 import { input } from "../components/input.js";
 import DOMHandler from "../dom_handler.js";
 import { login } from "../services/sessions-service.js";
+import STORE from "../store.js";
 import HomePage from "./home-page.js";
 function render() {
+  const { loginError } = LoginPage.state;
   return `
   <main class="section">
     <section class="container">
@@ -24,6 +26,9 @@ function render() {
           placeholder: "********",
           required: true,
         })}
+        ${
+          loginError ? `<p class="text-center error-300">${loginError}</p>` : ""
+        }
         <button class="button button--primary">Submit</button>
       </form>
     </section>
@@ -53,10 +58,14 @@ function listenSubmitForm() {
         password: password.value,
       };
       const user = await login(credentials);
-      console.log(user);
+      // console.log(user);
+      STORE.user = user;
+      console.log(STORE);
       DOMHandler.load(HomePage);
     } catch (error) {
-      console.log(error);
+      LoginPage.state.loginError = error.message;
+      console.log(error.message);
+      DOMHandler.reload();
     }
   });
 }
@@ -67,6 +76,9 @@ const LoginPage = {
 
   addListeners() {
     listenSubmitForm();
+  },
+  state: {
+    loginError: null,
   },
 };
 
