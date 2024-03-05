@@ -8,8 +8,8 @@ import { getUser } from "./scripts/services/user-service.js";
 
 async function init() {
   try {
-    // const token = sessionStorage.getItem(tokenKey);
-    const token = null;
+    const token = sessionStorage.getItem(tokenKey);
+    // const token = null;
     if (!token) return DOMHandler.load(LoginPage);
     //Home//////
     const user = await getUser();

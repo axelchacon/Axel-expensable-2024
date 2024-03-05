@@ -1,4 +1,7 @@
 import { input } from "../components/input.js";
+import DOMHandler from "../dom_handler.js";
+import { login } from "../services/sessions-service.js";
+import HomePage from "./home-page.js";
 function render() {
   return `
   <main class="section">
@@ -31,9 +34,30 @@ function render() {
 
 function listenSubmitForm() {
   const form = document.querySelector(".js-login-form");
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    console.log("submit");
+  form.addEventListener("submit", async (event) => {
+    /////Paso 1//////
+    // event.preventDefault();
+    // // console.log(event.target.elements);
+    // const { email, password } = event.target; // me permite captura lo que he llenado en formato objeto por lo que puede llavar sus propiedades con su valor.
+    // const credentials = {
+    //   email: email.value,
+    //   password: password.value,
+    // };
+    // console.log(credentials); ///te devuele un objeto como "{email: 'axelchacon@mail.co', password: 'fdfdfd'}" cuando escribe en el login
+    /////Paso 2//////
+    try {
+      event.preventDefault();
+      const { email, password } = event.target; // me permite captura lo que he llenado en formato objeto por lo que puede llavar sus propiedades con su valor.
+      const credentials = {
+        email: email.value,
+        password: password.value,
+      };
+      const user = await login(credentials);
+      console.log(user);
+      DOMHandler.load(HomePage);
+    } catch (error) {
+      console.log(error);
+    }
   });
 }
 const LoginPage = {
