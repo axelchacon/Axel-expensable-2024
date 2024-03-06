@@ -9,6 +9,18 @@ async function fetchCategories() {
     (category) => category.transaction_type === "expense"
   );
 }
+
+function currentCategories() {
+  ///////Forma1/////
+  // if (this.currentTab === "expense") {
+  //   return this["expense"];
+  // } else if (this.currentTab === "income") {
+  //   return this["income"];
+  // }
+  ///////Forma2/////
+  return this[this.currentTab];
+}
+
 const STORE = {
   user: null,
   // categories: [],
@@ -17,5 +29,6 @@ const STORE = {
   currentTab: "expense",
   //   loginError: null,
   fetchCategories, //Se puede hacer para los async
+  currentCategories,
 };
 export default STORE;

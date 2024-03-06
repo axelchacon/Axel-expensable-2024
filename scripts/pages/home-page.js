@@ -1,3 +1,5 @@
+import Expenses from "../components/expenses.js";
+import Profile from "../components/profile.js";
 import DOMHandler from "../dom_handler.js";
 import STORE from "../store.js";
 
@@ -16,7 +18,7 @@ function listenNavigation() {
 }
 
 function render() {
-  console.log(STORE.currentTab);
+  // console.log(STORE.currentTab);
   return `
   <main class ="section">
      <section class ="container">
@@ -32,6 +34,9 @@ function render() {
              STORE.currentTab === "profile" ? "activeTab" : ""
            } data-tab="profile">Profile</a>
         </div>
+        ${STORE.currentTab === "expense" ? Expenses : ""}
+        ${STORE.currentTab === "income" ? Expenses : ""}
+        ${STORE.currentTab === "profile" ? Profile : ""}
      </section>
   <main>`;
 }
