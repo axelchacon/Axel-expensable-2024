@@ -1,3 +1,4 @@
+import DOMHandler from "../dom_handler.js";
 import STORE from "../store.js";
 
 function listenNavigation() {
@@ -6,22 +7,30 @@ function listenNavigation() {
     event.preventDefault();
     const link = event.target.closest("[data-tab]");
     if (!link) return;
-    console.log("LLegó Bitch");
+    // console.log("LLegó Bitch");
     // console.log(event.target.dataset.tab); "event.target" puede tomar  "link"
-    console.log(link.dataset.tab);
+    // console.log(link.dataset.tab);
+    STORE.currentTab = link.dataset.tab;
+    DOMHandler.reload();
   });
 }
 
 function render() {
-  console.log(STORE);
+  console.log(STORE.currentTab);
   return `
   <main class ="section">
      <section class ="container">
         <h3 class="heading heading--lg text-center mb-2">Expensable</h3>
         <div class="flex justify-between mb-8 js-navigation">
-           <a href="#" class="button button--subtle js-nav-link" data-tab="expense">Expense</a> 
-           <a href="#" class="button button--subtle js-nav-link" data-tab="income">Income</a>
-           <a href="#" class="button button--subtle js-nav-link" data-tab="profile">Profile</a>
+           <a href="#" class="button button--subtle js-nav-link" ${
+             STORE.currentTab === "expense" ? "activeTab" : ""
+           } data-tab="expense">Expense</a> 
+           <a href="#" class="button button--subtle js-nav-link" ${
+             STORE.currentTab === "income" ? "activeTab" : ""
+           } data-tab="income">Income</a>
+           <a href="#" class="button button--subtle js-nav-link" ${
+             STORE.currentTab === "profile" ? "activeTab" : ""
+           } data-tab="profile">Profile</a>
         </div>
      </section>
   <main>`;

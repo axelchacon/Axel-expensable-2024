@@ -14,6 +14,7 @@ const STORE = {
   // categories: [],
   income: [],
   expense: [],
+  currentTab: "expense",
   //   loginError: null,
   fetchCategories, //Se puede hacer para los async
 };
