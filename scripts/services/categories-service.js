@@ -7,6 +7,6 @@ export function createCategory(
 ) {
   return apiFetch("/categories", { body: newCategory });
 }
-export function deleteCategories(id) {
+export function deleteCategory(id) {
   return apiFetch(`/categories/${id}`, { method: "DELETE" });
 }

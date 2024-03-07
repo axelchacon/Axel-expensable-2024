@@ -48,6 +48,8 @@ const HomePage = {
 
   addListeners() {
     listenNavigation();
+    //Lo Expenses.addListeners(); se añade para eliminar del Homepage que lo que vemos.
+    Expenses.addListeners();
   },
 };
 

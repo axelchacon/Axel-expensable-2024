@@ -23,6 +23,15 @@ function currentCategories() {
   return this[this.currentTab];
 }
 
+function deleteCategory(id) {
+  if (this.currentTab === "expense") {
+    this.expense = this.expense.filter((category) => category.id != id);
+  }
+  if (this.currentTab === "income") {
+    this.income = this.income.filter((category) => category.id != id);
+  }
+}
+
 const STORE = {
   user: null,
   // categories: [],
@@ -32,5 +41,6 @@ const STORE = {
   //   loginError: null,
   fetchCategories, //Se puede hacer para los async
   currentCategories,
+  deleteCategory,
 };
 export default STORE;
