@@ -14,8 +14,10 @@ function currentCategories() {
   ///////Forma1/////
   // if (this.currentTab === "expense") {
   //   return this["expense"];
+  //   // return this.expense;
   // } else if (this.currentTab === "income") {
   //   return this["income"];
+  //   // return this.income;
   // }
   ///////Forma2/////
   return this[this.currentTab];
