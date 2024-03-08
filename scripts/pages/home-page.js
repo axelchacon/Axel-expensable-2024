@@ -50,7 +50,9 @@ const HomePage = {
     listenNavigation();
     //Lo Expenses.addListeners(); se añade para eliminar del Homepage que lo que vemos.
     // Expenses.addListeners();
-    Profile.addListeners();
+    if (["expense", "income"].includes(STORE.currentTab))
+      Expenses.addListeners();
+    if (STORE.currentTab === "profile") Profile.addListeners();
   },
 };
 

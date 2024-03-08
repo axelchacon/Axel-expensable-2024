@@ -1,17 +1,33 @@
 import { input } from "../components/input.js";
+import DOMHandler from "../dom_handler.js";
+import { updateUser } from "../services/user-service.js";
 import STORE from "../store.js";
+import Expenses from "./expenses.js";
 function listenSubmitForm() {
   const form = document.querySelector(".js-profile-form");
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const { email, first_name, last_name, phone } = event.target;
-    const data = {
-      email: email.value,
-      first_name: first_name.value,
-      last_name: last_name.value,
-      phone: phone,
-    };
-    console.log(data);
+  form.addEventListener("submit", async (event) => {
+    try {
+      event.preventDefault();
+      const { email, first_name, last_name, phone } = event.target;
+      const data = {
+        email: email.value,
+        first_name: first_name.value,
+        last_name: last_name.value,
+        phone: phone,
+      };
+      //updateUser
+      const user = await updateUser(data);
+
+      //actualizar los datos del STORE
+      STORE.user = user;
+      //Reaload
+      DOMHandler.reload();
+      // console.log(data);
+    } catch (error) {
+      console.log(error);
+      Profile.state.formError = error.message;
+      DOMHandler.reload();
+    }
   });
 }
 
