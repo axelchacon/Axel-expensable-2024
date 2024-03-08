@@ -31,6 +31,9 @@ function deleteCategory(id) {
     this.income = this.income.filter((category) => category.id != id);
   }
 }
+function addCategory(newCategory) {
+  this[this.currentTab].push(newCategory);
+}
 
 const STORE = {
   user: null,
@@ -42,5 +45,6 @@ const STORE = {
   fetchCategories, //Se puede hacer para los async
   currentCategories,
   deleteCategory,
+  addCategory,
 };
 export default STORE;
