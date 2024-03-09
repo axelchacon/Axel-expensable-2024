@@ -13,7 +13,7 @@ function listenSubmitForm() {
         email: email.value,
         first_name: first_name.value,
         last_name: last_name.value,
-        phone: phone,
+        phone: phone.value,
       };
       //updateUser
       const user = await updateUser(data);

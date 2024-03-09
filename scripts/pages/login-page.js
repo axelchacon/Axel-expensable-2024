@@ -61,7 +61,7 @@ function listenSubmitForm() {
       // console.log(user);
       STORE.user = user;
       // console.log(STORE);
-      STORE.fetchCategories();
+      await STORE.fetchCategories();
       console.log(STORE);
       DOMHandler.load(HomePage);
     } catch (error) {

@@ -16,7 +16,7 @@ async function init() {
     const user = await getUser();
     console.log(user);
     STORE.user = user;
-    STORE.fetchCategories();
+    await STORE.fetchCategories();
     DOMHandler.load(HomePage);
   } catch (error) {
     console.log(error);
